@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Summary Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.section {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  margin-bottom: 16px;
+}
+
+.request-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.request-item {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.request-info {
+  color: #333333;
+}
+
+.accept-button {
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.accept-button:hover {
+  background-color: #2563eb;
+}
+
+    </style>
+  <div class="container">
+    <!-- New Requests Section -->
+    <div class="section new-requests">
+      <h2 class="section-title">New Requests: 2</h2>
+      <ul class="request-list">
+        <li class="request-item">
+          <span class="request-info">Customer: John Doe | Request: Fix air conditioner</span>
+          <button class="accept-button">Accept</button>
+        </li>
+        <li class="request-item">
+          <span class="request-info">Customer: Jane Smith | Request: Install new heater</span>
+          <button class="accept-button">Accept</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Accepted Requests Section -->
+    <div class="section accepted-requests">
+      <h2 class="section-title">Accepted Requests: 1</h2>
+      <ul class="request-list">
+        <li class="request-item">
+          <span class="request-info">Customer: Emily Johnson | Request: Repair washing machine</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const newRequests = [
+    { id: 1, customer: 'John Doe', request: 'Fix air conditioner' },
+    { id: 2, customer: 'Jane Smith', request: 'Install new heater' },
+  ];
+
+  const acceptedRequests = [
+    { id: 3, customer: 'Emily Johnson', request: 'Repair washing machine' },
+  ];
+
+  const newRequestsList = document.getElementById('new-requests-list');
+  const acceptedRequestsList = document.getElementById('accepted-requests-list');
+  const newRequestsCount = document.getElementById('new-requests-count');
+  const acceptedRequestsCount = document.getElementById('accepted-requests-count');
+
+  const updateCounts = () => {
+    newRequestsCount.textContent = newRequests.length;
+    acceptedRequestsCount.textContent = acceptedRequests.length;
+  };
+
+  const renderRequests = () => {
+    newRequestsList.innerHTML = '';
+    newRequests.forEach(request => {
+      const listItem = document.createElement('li');
+      listItem.className = 'request-item';
+      listItem.innerHTML = `
+        <span class="request-info">Customer: ${request.customer} | Request: ${request.request}</span>
+        <button class="accept-button" onclick="acceptRequest(${request.id})">Accept</button>
+      `;
+      newRequestsList.appendChild(listItem);
+    });
+
+    acceptedRequestsList.innerHTML = '';
+    acceptedRequests.forEach(request => {
+      const listItem = document.createElement('li');
+      listItem.className = 'request-item';
+      listItem.innerHTML = `
+        <span class="request-info">Customer: ${request.customer} | Request: ${request.request}</span>
+      `;
+      acceptedRequestsList.appendChild(listItem);
+    });
+  };
+
+  window.acceptRequest = (id) => {
+    const requestIndex = newRequests.findIndex(request => request.id === id);
+    if (requestIndex > -1) {
+      const [request] = newRequests.splice(requestIndex, 1);
+      acceptedRequests.push(request);
+      renderRequests();
+      updateCounts();
+    }
+  };
+
+  renderRequests();
+  updateCounts();
+});
+
+  </script>
+</body>
+</html>

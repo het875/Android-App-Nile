@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.myapplication.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_request_summary"
+        android:name="com.example.myapplication.ui.request_summary.Request_Summary_Fragment"
+        android:label="Request Summary"
+        tools:layout="@layout/fragment_request_summary" />
+
+    <fragment
+        android:id="@+id/nav_new_requests"
+        android:name="com.example.myapplication.ui.new_requests.new_requests"
+        android:label="New Requests"
+        tools:layout="@layout/new_requests_fragment" />
+    <fragment
+        android:id="@+id/nav_assigned_requests"
+        android:name="com.example.myapplication.ui.assigned_request.Assigned_Request"
+        android:label="Assigned Requests"
+        tools:layout="@layout/assigned_request_fragment" />
+    <fragment
+        android:id="@+id/nav_request_details"
+        android:name="com.example.myapplication.ui.request_details.request_details"
+        android:label="Requests Detailes"
+        tools:layout="@layout/request_details_fragment" />
+
+</navigation>

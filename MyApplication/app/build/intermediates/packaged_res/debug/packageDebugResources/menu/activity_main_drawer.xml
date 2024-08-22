@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<!--    <group android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/nav_home"-->
+<!--            android:icon="@drawable/ic_menu_camera"-->
+<!--            android:title="@string/menu_home" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_gallery"-->
+<!--            android:icon="@drawable/ic_menu_gallery"-->
+<!--            android:title="@string/menu_gallery" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/"-->
+<!--            android:title="@string/menu_slideshow" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_request_details"-->
+<!--            android:icon="@drawable/request_details"-->
+<!--            android:title="Request Details" />-->
+<!--    </group>-->
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_button"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_request_summary"
+            android:icon="@drawable/request_summary"
+            android:title="Request Summary"/>
+        <item
+            android:id="@+id/nav_new_requests"
+            android:icon="@drawable/new_request"
+            android:title="New Requests"/>
+        <item
+            android:id="@+id/nav_assigned_requests"
+            android:icon="@drawable/assigned_to"
+            android:title="Assigned Requests" />
+        <item
+            android:id="@+id/nav_request_details"
+            android:icon="@drawable/request_details"
+            android:title="Request Details" />
+    </group>
+</menu>

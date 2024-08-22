@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Summary Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.request-list {
+  list-style: none;
+  padding: 0;
+}
+
+.request-list li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-list li:hover {
+  background-color: #f1f5f9;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.hidden {
+  display: none;
+}
+
+.details-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.task-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+    </style>
+  <div class="container">
+    <h1 class="title">Assigned Requests</h1>
+
+    <ul id="requestList" class="request-list">
+      <!-- Request items will be inserted here by JavaScript -->
+    </ul>
+
+    <div id="detailsSection" class="details-section hidden">
+      <h2 class="subtitle">Request Details</h2>
+      <p><strong>Customer:</strong> <span id="customerName"></span></p>
+      <p><strong>Address:</strong> <span id="address"></span></p>
+      <p><strong>Contact:</strong> <span id="contact"></span></p>
+      <p><strong>Request Type:</strong> <span id="requestType"></span></p>
+      <p><strong>Date of Request:</strong> <span id="dateOfRequest"></span></p>
+
+      <h3 class="section-title">Tasks</h3>
+      <ul id="tasksList" class="task-list"></ul>
+
+      <h3 class="section-title">Tasks to be Completed in the Future</h3>
+      <ul id="futureTasksList" class="task-list"></ul>
+
+      <h3 class="section-title">AMC Details</h3>
+      <div class="form-group">
+        <label for="customerNameInput">Customer Name:</label>
+        <input type="text" id="customerNameInput" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="startDateInput">Start Date:</label>
+        <input type="date" id="startDateInput" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="endDateInput">End Date:</label>
+        <input type="date" id="endDateInput" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="coverageSelect">Coverage:</label>
+        <select id="coverageSelect" class="form-control">
+          <!-- Options will be inserted here by JavaScript -->
+        </select>
+      </div>
+      <button id="saveAMCButton" class="btn btn-success">Save AMC Details</button>
+
+      <div class="button-group">
+        <button id="closeRequestButton" class="btn btn-primary">Close Request</button>
+        <button id="submitCloseButton" class="btn btn-primary">Submit and Close Request</button>
+      </div>
+
+      <textarea id="commentsInput" class="form-control" placeholder="Enter any comments or notes here..."></textarea>
+    </div>
+  </div>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const coverageOptions = [
+    'Full Maintenance',
+    'Basic Maintenance',
+    'Limited Maintenance',
+    'No Coverage'
+  ];
+
+  const requests = [
+    {
+      id: 1,
+      customer: 'John Doe',
+      request: 'Repair Service',
+      date: '2024-08-15',
+      details: {
+        address: '123 Main St',
+        contact: '555-1234',
+        requestType: 'Repair',
+        dateOfRequest: '2024-08-15',
+        tasks: ['Inspect equipment', 'Replace parts'],
+        futureTasks: ['Follow-up call'],
+        amc: {
+          customerName: 'John Doe',
+          startDate: '2024-08-20',
+          endDate: '2025-08-20',
+          coverage: 'Full Maintenance'
+        }
+      }
+    }
+  ];
+
+  const requestList = document.getElementById('requestList');
+  const detailsSection = document.getElementById('detailsSection');
+  const customerNameEl = document.getElementById('customerName');
+  const addressEl = document.getElementById('address');
+  const contactEl = document.getElementById('contact');
+  const requestTypeEl = document.getElementById('requestType');
+  const dateOfRequestEl = document.getElementById('dateOfRequest');
+  const tasksList = document.getElementById('tasksList');
+  const futureTasksList = document.getElementById('futureTasksList');
+  const coverageSelect = document.getElementById('coverageSelect');
+  const customerNameInput = document.getElementById('customerNameInput');
+  const startDateInput = document.getElementById('startDateInput');
+  const endDateInput = document.getElementById('endDateInput');
+  const commentsInput = document.getElementById('commentsInput');
+  const saveAMCButton = document.getElementById('saveAMCButton');
+  const closeRequestButton = document.getElementById('closeRequestButton');
+  const submitCloseButton = document.getElementById('submitCloseButton');
+
+  let selectedRequest = null;
+
+  const renderRequests = () => {
+    requestList.innerHTML = '';
+    requests.forEach(request => {
+      const li = document.createElement('li');
+      li.className = 'request-item';
+      li.innerHTML = `
+        <div>
+          <p><strong>Customer:</strong> ${request.customer}</p>
+          <p><strong>Request:</strong> ${request.request} | <strong>Date:</strong> ${request.date}</p>
+        </div>
+        <button class="btn btn-primary" onclick='viewDetails(${JSON.stringify(request).replace(/'/g, "\\'")})'>View Details</button>
+      `;
+      requestList.appendChild(li);
+    });
+  };
+
+  const populateCoverageOptions = () => {
+    coverageSelect.innerHTML = '';
+    coverageOptions.forEach(option => {
+      const opt = document.createElement('option');
+      opt.value = option;
+      opt.textContent = option;
+      coverageSelect.appendChild(opt);
+    });
+  };
+
+  const viewDetails = (request) => {
+    selectedRequest = request;
+    customerNameEl.textContent = request.details.amc.customerName;
+    addressEl.textContent = request.details.address;
+    contactEl.textContent = request.details.contact;
+    requestTypeEl.textContent = request.details.requestType;
+    dateOfRequestEl.textContent = request.details.dateOfRequest;
+
+    tasksList.innerHTML = '';
+    request.details.tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.textContent = task;
+      tasksList.appendChild(li);
+    });
+
+    futureTasksList.innerHTML = '';
+    request.details.futureTasks.forEach(task => {
+      const li = document.createElement('li');
+      li.textContent = task;
+      futureTasksList.appendChild(li);
+    });
+
+    customerNameInput.value = request.details.amc.customerName;
+    startDateInput.value = request.details.amc.startDate;
+    endDateInput.value = request.details.amc.endDate;
+    coverageSelect.value = request.details.amc.coverage;
+
+    detailsSection.classList.remove('hidden');
+  };
+
+  saveAMCButton.addEventListener('click', () => {
+    if (selectedRequest) {
+      selectedRequest.details.amc = {
+        customerName: customerNameInput.value,
+        startDate: startDateInput.value,
+        endDate: endDateInput.value,
+        coverage: coverageSelect.value
+      };
+      viewDetails(selectedRequest); // Re-render to show updated details
+    }
+  });
+
+  closeRequestButton.addEventListener('click', () => {
+    if (selectedRequest) {
+      const index = requests.findIndex(r => r.id === selectedRequest.id);
+      requests.splice(index, 1);
+      selectedRequest = null;
+      detailsSection.classList.add('hidden');
+      renderRequests();
+    }
+  });
+
+  submitCloseButton.addEventListener('click', () => {
+    if (selectedRequest) {
+      const index = requests.findIndex(r => r.id === selectedRequest.id);
+      requests.splice(index, 1);
+      selectedRequest = null;
+      detailsSection.classList.add('hidden');
+      renderRequests();
+    }
+  });
+
+  // Initial rendering
+  renderRequests();
+  populateCoverageOptions();
+});
+
+  </script>
+  <script src="scripts.js"></script>
+</body>
+</html>

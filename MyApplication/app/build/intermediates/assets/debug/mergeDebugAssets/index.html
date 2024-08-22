@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Summary</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.request-summary {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  background-color: #f0f4f8;
+  padding: 16px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-count {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.pending {
+  background-color: #fffde7;
+}
+
+.completed {
+  background-color: #e8f5e9;
+}
+
+.new {
+  background-color: #e3f2fd;
+}
+
+  </style>
+  <div class="container">
+    <div class="request-summary">
+      <h2 class="title">Request Summary</h2>
+      <div class="cards">
+        <div class="card pending">
+          <h3 class="card-title">Pending Requests</h3>
+          <p class="card-count">12</p>
+        </div>
+        <div class="card completed">
+          <h3 class="card-title">Completed Requests</h3>
+          <p class="card-count">45</p>
+        </div>
+        <div class="card new">
+          <h3 class="card-title">New Requests</h3>
+          <p class="card-count">8</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

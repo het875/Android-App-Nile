@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/new_requests_fragment.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/new_requests_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\content_main.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\content_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\app_bar_main.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/request_details_fragment.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/request_details_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\fragment_slideshow.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\fragment_slideshow.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\assigned_request_fragment.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\assigned_request_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\nav_header_main.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\nav_header_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\fragment_request_summary.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\fragment_request_summary.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\fragment_gallery.xml",
+        "source": "C:\\Users\\Nilepur\\.gradle\\daemon\\8.7\\com.example.myapplication.app-main-47:\\layout\\fragment_gallery.xml"
+    }
+]
